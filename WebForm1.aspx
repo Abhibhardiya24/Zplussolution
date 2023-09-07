@@ -49,10 +49,11 @@
                     <tr>
                         <td>
                             <asp:Button ID="txtSubmit" runat="server" Text="Submit" OnClick="txtSubmit_Click" />
-                            
+                            <asp:Button ID="txtUpdate" runat="server" Text="Update" OnClick="txtUpdate_Click" />
+                            <asp:Button ID="txtDelete" runat="server" Text="Delete" OnClick="txtDelete_Click" />
                        </td>
                     </tr>
-                <tr>
+                 <tr>
                     <td>
                         <asp:Label ID="lblmsg" runat="server" Text=""></asp:Label>
                     </td>

@@ -19,7 +19,7 @@ namespace Zplussolution
         
         protected void txtSubmit_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=MSI\\MSSQLSERVER01;Initial Catalog=Zplussolution;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=MSI\MSSQLSERVER01;Initial Catalog=Zplussolution;Integrated Security=True");
             string str = " ";
             str = "insert into Zplussolution(EmployeeName,EmployeeID,Designation,CityName,MobileNumber)"
                 + "values('" + txtName.Text + "','" + txtID.Text + "','" + txtDesignation.Text + "','" + txtCity.Text + "','" + txtNumber.Text + "')";
@@ -29,11 +29,42 @@ namespace Zplussolution
             SqlCommand cmd = new SqlCommand(str, con);
 
             cmd.ExecuteNonQuery();
-            lblmsg.Text = "The entries has been submitted!";
+            lblmsg.Text = "The entries has been Submitted!";
             con.Close();
            
         }
 
-        
+        protected void txtUpdate_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=MSI\MSSQLSERVER01;Initial Catalog=Zplussolution;Integrated Security=True");
+
+            string str = "  ";
+
+            str = "UPDATE Zplussolution SET(EmployeeName,EmployeeID,Designation,CityName,MobileNumber)"
+                + "WHERE('" + txtName.Text + "','" + txtID.Text + "','" + txtDesignation.Text + "','" + txtCity.Text + "','" + txtNumber.Text + "')";
+
+            con.Open();
+            
+            SqlCommand cmd = new SqlCommand(str, con);
+            cmd.ExecuteNonQuery();
+            lblmsg.Text = "The entries has been Updated!";
+            con.Close();
+        }
+
+        protected void txtDelete_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=MSI\MSSQLSERVER01;Initial Catalog=Zplussolution;Integrated Security=True");
+            string str = " ";
+
+            str = "DELETE From Zplussolution(EmployeeName,EmployeeID,Designation,CityName,MobileNumber)"
+                + "WHERE('" + txtName.Text + "','" + txtID.Text + "','" + txtDesignation.Text + "','" + txtCity.Text + "','" + txtNumber.Text + "')";
+
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(str, con);
+            cmd.ExecuteNonQuery();
+            lblmsg.Text = "The entries has been Deleted!";
+            con.Close();
+        }
     }
 }
